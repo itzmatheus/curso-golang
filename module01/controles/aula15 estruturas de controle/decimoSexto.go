@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"math/rand"
+	"time"
+)
 
 func imprimirResultado(nota float64) {
 
@@ -24,10 +29,25 @@ func notaConceito(nota float64) string {
 
 }
 
+func numeroAleatorio() int {
+	s := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(s)
+
+	return r.Intn(10)
+}
+
 func main() {
 
 	nota := 9.5
 	imprimirResultado(nota)
 	conceito := notaConceito(nota)
 	fmt.Println(conceito)
+
+	// if com inicializacao de variavel apenas dentro do escopo do IF
+
+	if i := numeroAleatorio(); i > 5 { // suportado tambem no switch
+		log.Println("Maior que 5", i)
+	} else {
+		log.Println("Menor que 5", i)
+	}
 }
