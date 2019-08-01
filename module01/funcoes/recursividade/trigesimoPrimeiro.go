@@ -15,12 +15,22 @@ func fatorial(n int) (int, error) {
 	}
 
 }
+func fatorial2(n uint) uint {
+	switch {
+	case n == 0:
+		return 1
+	default:
+		return n * fatorial2(n-1)
+	}
 
+}
 func main() {
 
 	a, _ := fatorial(3)
 	fmt.Println(a)
 	_, err := fatorial(-1)
 	fmt.Println(err)
+	b := fatorial2(3)
+	fmt.Println(b)
 
 }
