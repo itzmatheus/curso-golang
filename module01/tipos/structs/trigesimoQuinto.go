@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 //Produto
 type Produto struct {
@@ -35,6 +38,21 @@ func (p Pedido) valorTotal() float64 {
 
 }
 
+type Pessoa struct {
+	Nome      string
+	Sobrenome string
+}
+
+func (p Pessoa) getNome() string {
+	return p.Nome + " " + p.Sobrenome
+}
+
+func (p *Pessoa) setNomeCompleto(novoNome string) {
+	partes := strings.Split(novoNome, " ")
+	p.Nome = partes[0]
+	p.Sobrenome = partes[1]
+}
+
 func main() {
 
 	var produto1 *Produto
@@ -63,5 +81,13 @@ func main() {
 
 	fmt.Println(pedido)
 	fmt.Printf("Valor total: R$ %.2f\n", pedido.valorTotal())
+
+	p1 := Pessoa{Nome: "Matheus", Sobrenome: "Leite"}
+	fmt.Println(p1.getNome())
+
+	// Por baixo dos panos o Go vai pegar a referencia que não é um ponteiro e passar para a função
+	// com receiver o endereço dela para ser alterada de forma encapsulada
+	p1.setNomeCompleto("Leite Jose")
+	fmt.Println(p1.getNome())
 
 }
