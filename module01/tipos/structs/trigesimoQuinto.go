@@ -13,6 +13,28 @@ type Produto struct {
 func (p Produto) precoComDesconto() float32 {
 	return p.Preco * (1 - p.Desconto)
 }
+
+type Item struct {
+	produtoID  int
+	quantidade int
+	preco      float64
+}
+
+type Pedido struct {
+	userID int
+	itens  []Item
+}
+
+func (p Pedido) valorTotal() float64 {
+
+	total := 0.0
+	for _, item := range p.itens {
+		total += (item.preco * float64(item.quantidade))
+	}
+	return total
+
+}
+
 func main() {
 
 	var produto1 *Produto
@@ -27,5 +49,19 @@ func main() {
 	produto2 := Produto{"Headset Logitech G935", 879.99, 0.05}
 
 	fmt.Println(produto2, produto2.precoComDesconto())
+
+	fmt.Println("==============")
+
+	pedido := Pedido{
+		userID: 1,
+		itens: []Item{
+			Item{1, 2, 30.00},
+			Item{2, 3, 99.90},
+			Item{3, 1, 278.90},
+		},
+	}
+
+	fmt.Println(pedido)
+	fmt.Printf("Valor total: R$ %.2f\n", pedido.valorTotal())
 
 }
