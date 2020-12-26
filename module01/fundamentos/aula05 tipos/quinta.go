@@ -29,7 +29,7 @@ func main() {
 	fmt.Println("Max int64: ", i1)
 	fmt.Println("Seu tipoe é: ", reflect.TypeOf(i1))
 
-	var i2 = 'a' // representa um mapeamento da tabela Unicode (int32)
+	var i2 rune = 'a' // representa um mapeamento da tabela Unicode (int32)
 	// var i2 rune = 'a' nao precisa declara o rune, ja esta explicito pelo uso das aspas simples
 	fmt.Println("Valor de i: ", i2)
 	fmt.Println("Seu tipo é: ", reflect.TypeOf(i2))
