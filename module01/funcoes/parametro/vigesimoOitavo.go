@@ -8,7 +8,7 @@ func secret(nome string) (retorno string) {
 }
 func exec(funcao func(string) string, usuario, senha string) (retorno string) {
 	if usuario == "matheus" && senha == "123456" {
-		retorno = secret(usuario)
+		retorno = funcao(usuario)
 	} else {
 		retorno = "Usuario Incorreto"
 	}
