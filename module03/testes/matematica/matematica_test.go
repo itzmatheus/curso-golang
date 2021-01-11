@@ -16,3 +16,6 @@ func TestMediaValorEsperado(t *testing.T) {
 }
 
 // go test ./...
+// go test -cover
+// go test -coverprofile=resultado.out
+// go tool cover -html=resultado.out
